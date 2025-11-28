@@ -1,4 +1,4 @@
-import { Dimensions, FlatList, Modal, Pressable, StyleSheet, TouchableOpacity } from 'react-native';
+import { Dimensions, FlatList, Modal, StyleSheet, TouchableOpacity } from 'react-native';
 
 import RNFS from 'react-native-fs';
 import ManageExternalStorage from 'react-native-external-storage-permission';
