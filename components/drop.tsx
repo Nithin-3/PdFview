@@ -28,17 +28,19 @@ export default function Drop<T>({ options, placeHolder, value, onChange }: props
         onChange?.(value)
     };
     return (
-        <ThemedView>
-            <TouchableOpacity style={[styles.dropdown, { borderColor }]}
+        <ThemedView style={[styles.dropdown, { borderColor }]}>
+            <TouchableOpacity
                 onPress={(e) => {
                     const { pageX, pageY, } = e.nativeEvent;
                     sloc({ x: pageX, y: pageY });
                     setVisible(true);
                 }}>
                 <ThemedText style={styles.dropdownText}>
-                    {selected
-                        ? options.find((o) => String(o.value) === String(selected))?.label
-                        : placeHolder}
+                    {value !== undefined && value !== null
+                        ? options.find(o => String(o.value) === String(value))?.label :
+                        selected
+                            ? options.find((o) => String(o.value) === String(selected))?.label
+                            : placeHolder}
                 </ThemedText>
             </TouchableOpacity>
 

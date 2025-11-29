@@ -44,12 +44,14 @@ export default function Index() {
     const getFiles = async () => {
         const rootDir = RNFS.ExternalStorageDirectoryPath;
         let queue = [rootDir];
+        let isempty = true;
         while (queue.length > 0) {
             const currentDir: string = queue.shift() || '';
             const items = await RNFS.readDir(`${currentDir}`);
             for (const item of items) {
                 if (item.isFile() && item.name.match(/\.(pdf)$/i)) {
                     addOrUpdateFile({ path: item.path, name: item.name, size: item.size, mtime: item.mtime })
+                    isempty = false
                 } else if (item.isDirectory()) {
                     if (currentDir.includes('/Android')) continue;
                     if (currentDir.includes('/.')) continue;
@@ -57,7 +59,7 @@ export default function Index() {
                 }
             }
         }
-        files?.length || addOrUpdateFile({ path: "NA", name: "empty", size: 0, mtime: undefined });
+        isempty && addOrUpdateFile({ path: "NA", name: "empty", size: 0, mtime: undefined });
     };
     const search = (t: string) => {
         const term = t.toLowerCase();
@@ -71,7 +73,7 @@ export default function Index() {
         reFill([...matches, ...others]);
     };
     const list = ({ item }: { item: { path: string; name: string } }) => (
-        <TouchableOpacity style={[styles.lisTxt, { borderColor }]} onPress={() => { rout.push({ pathname: "/pdf", params: { idx: files?.findIndex(f => f.path === item.path) } }) }} onLongPress={e => { sloc({ x: e.nativeEvent.pageX, y: e.nativeEvent.pageY, path: `file://${item.path}` }) }} >
+        <TouchableOpacity style={[styles.lisTxt, { borderColor }]} onPress={() => { if (item.path !== "NA") rout.push({ pathname: "/pdf", params: { idx: files?.findIndex(f => f.path === item.path) } }) }} onLongPress={e => { sloc({ x: e.nativeEvent.pageX, y: e.nativeEvent.pageY, path: `file://${item.path}` }) }} >
             <ThemedText>{item.name.replace(/\.[^/.]+$/, "")}</ThemedText>
         </TouchableOpacity>
     )
