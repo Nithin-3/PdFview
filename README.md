@@ -51,3 +51,18 @@ Make sure you provide storage permissions in your `AndriodManifest.xml` or manua
 ```xml
 <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
 ```
+
+## Screenshots
+
+<table>
+  <tr>
+    <td align="center"><img src="assets/Screenshot_20251129_100533_PdFview.jpg" width="200"/><br>Main File List (Dark)</td>
+    <td align="center"><img src="assets/Screenshot_20251129_100550_PdFview.jpg" width="200"/><br>Main File List (Light)</td>
+    <td align="center"><img src="assets/Screenshot_20251129_100636_PdFview.jpg" width="200"/><br>PDF Preview</td>
+  </tr>
+  <tr>
+    <td align="center"><img src="assets/Screenshot_20251129_100652_PdFview.jpg" width="200"/><br>PDF Page (Dark)</td>
+    <td align="center"><img src="assets/Screenshot_20251129_100711_PdFview.jpg" width="200"/><br>PDF Page (Light)</td>
+    <td align="center"><img src="assets/Screenshot_20251129_100742_PdFview.jpg" width="200"/><br>Jump to Page</td>
+  </tr>
+</table>
