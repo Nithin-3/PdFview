@@ -1,50 +1,53 @@
-# Welcome to your Expo app 👋
+# PdFview
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+PdFview is an **Expo-based React Native app** designed to help you **read all PDF files on your device** efficiently. It requests permission to manage external storage (`android.permission.MANAGE_EXTERNAL_STORAGE`) on Android to access and display your PDFs. With fully custom-built UI components, PdFview provides a sleek mobile experience that supports both light and dark themes.
 
-## Get started
+## Features
 
-1. Install dependencies
+- **Comprehensive PDF Search**
+  - Finds and lists **all PDF files** on your device using a BFS (Breadth-First Search) approach
+  - Avoids hidden files, displaying only accessible PDFs
 
-   ```bash
-   npm install
-   ```
+- **Powerful Navigation**
+  - **Open PDFs directly in-app**
+  - **Long press** any file in the list to preview its contents
+  - Switch to the **next or previous PDF**
+  - **Jump to a specific page** by tapping the page number
 
-2. Start the app
+- **Intuitive File Management**
+  - Search PDFs by name
+  - **Sort files** by name, size, or modified time—ascending or descending
 
-   ```bash
-   npx expo start
-   ```
+- **Permissions**
+  - Requests `MANAGE_EXTERNAL_STORAGE` on Android for full device file access
 
-In the output, you'll find options to open the app in a
+- **Modern Mobile Theme**
+  - Always uses light/dark theme based on your device settings
+  - **All UI components are custom made** for PdFview
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+## Installation
 
 ```bash
-npm run reset-project
+git clone https://github.com/Nithin-3/PdFview.git
+cd PdFview
+pnpm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Running the app
 
-## Learn more
+> **PdFview is built with Expo.**  
+To start the app, use:
 
-To learn more about developing your project with Expo, look at the following resources:
+```bash
+pnpm start
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+This will start Expo and give you QR codes for easy testing on your device.
 
-## Join the community
+### Android Permissions
 
-Join our community of developers creating universal apps.
+Make sure you provide storage permissions in your `AndriodManifest.xml` or manually on your device:
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```xml
+<uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
+```
